@@ -1,0 +1,11 @@
+export { default as Signup } from "./Signup";
+export { default as login } from "./login";
+export { default as CreateProfile } from "./CreateProfile";
+export { default as Feed } from "./feed";
+export { default as mynetwork } from "./mynetwork";
+export { default as ChangePassword } from "./ChangePassword";
+export { default as MyProfile } from "./MyProfile";
+export { default as SearchPeople } from "./SearchPeople";
+export { default as ForgotPass } from "./ForgotPass";
+export { default as Profile } from "./Profile";
+export { default as BlockedUsers } from "./BlockedUsers";

@@ -1,0 +1,200 @@
+.App-header {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  height: 100vh;
+  flex-flow: wrap;
+}
+
+/* .Signup {
+  width: 400px;
+  height: fit-content;
+  background-color: #f8f8f8;
+  padding: 1em;
+  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+} */
+.Signup .logo {
+  height: 120px;
+  width: 120px;
+  position: relative;
+  left: 30%;
+  display: inline-block;
+  margin: 2%;
+}
+.Signup .register-form .forgot-password,
+.Signup .register-form .forgot-password a {
+  text-align: right;
+  font-size: 13px;
+  padding-top: 10px;
+  color: #504f4f;
+  margin: 0;
+}
+.Signup .register-form .forgot-password a {
+  color: #167bff;
+}
+.register-form .btn-primary {
+  margin-top: 10px;
+  background-color: #c30003;
+}
+.container {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: max-content;
+}
+.Signup .register-form .custom-control-label {
+  font-weight: 500;
+  margin: 10px;
+}
+.Signup .register-form .form-label-group .error {
+  color: red;
+}
+.Signin .logo {
+  height: 120px;
+  width: 120px;
+  position: relative;
+  left: 30%;
+  display: inline-block;
+  margin: 2%;
+}
+.posts {
+  display: inline;
+  flex-direction: row;
+}
+.posts .card {
+  width: 500px;
+}
+.myprofile {
+  margin: 2em;
+  padding: 1em;
+  background: #f8f8f8;
+  width: 65%;
+}
+.myprofile .profile-imgs {
+  width: 100%;
+  height: 480px;
+  background: white;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+.myprofile .background-img {
+  width: 90%;
+  padding: 1em 1em 0 1em;
+  height: 50%;
+}
+.myprofile .profile-img {
+  border-radius: 50%;
+  width: 128px;
+  height: 128px;
+  margin: 0 1em 1em;
+  position: relative;
+  top: -4em;
+  left: 15px;
+  border: solid 5px white;
+}
+.myprofile .profile-imgs .user-info {
+  /* display: flex !important; */
+  position: relative;
+  bottom: 90px;
+  justify-content: flex-start;
+  padding: 0.5em 2em 0;
+}
+.flex-1 {
+  flex: 1 !important;
+  font-size: 1.7rem;
+  line-height: 1.33333;
+}
+.headline {
+  font-size: 1rem;
+  line-height: 1.33333;
+  font-weight: 400;
+  margin-top: 4px !important;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+.block {
+  background: white;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.15);
+  width: 100%;
+}
+.mtb {
+  margin: 16px 0;
+  padding: 24px;
+}
+.justify-space-between {
+  justify-content: space-between;
+}
+.inline-block {
+  display: inline-block;
+}
+.t-20 {
+  font-size: 1.5rem;
+  line-height: 1.4;
+}
+.list li {
+  padding-right: 10px;
+}
+.search {
+  margin: 1em;
+  width: 400px;
+  height: auto;
+}
+.search-bar {
+  position: fixed;
+}
+.results-container {
+  display: block;
+  /* flex-flow: wrap; */
+  position: static;
+  overflow: visible;
+}
+.menu {
+  display: inline;
+}
+.post-img {
+  width: 100%;
+  padding: 1em;
+}
+.myprofile .profile-imgs .addFriend {
+  margin: 1em;
+  float: right;
+}
+.modal {
+  font-size: 12px;
+}
+.modal > .header {
+  width: 100%;
+  border-bottom: 1px solid gray;
+  font-size: 18px;
+  text-align: center;
+  padding: 5px;
+}
+.modal > .content {
+  width: 100%;
+  padding: 10px 5px;
+}
+.modal > .actions {
+  width: 100%;
+  padding: 10px 5px;
+  margin: auto;
+  text-align: center;
+}
+.modal > .close {
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  padding: 2px 5px;
+  line-height: 20px;
+  right: -10px;
+  top: -10px;
+  font-size: 24px;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #cfcece;
+}
