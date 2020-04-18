@@ -1,15 +1,15 @@
 import React, { Component } from "react";
-import logo from "../images/logo.jpeg";
+import logo from "../images/teenivo-logo.png";
 import "../App.css";
 import { Link } from "react-router-dom";
 
 const formValid = ({ errors, ...rest }) => {
   let valid = true;
-  Object.values(errors).forEach(val => {
+  Object.values(errors).forEach((val) => {
     val.length > 0 && (valid = false);
   });
 
-  Object.values(rest).forEach(val => {
+  Object.values(rest).forEach((val) => {
     val == null && (valid = false);
   });
   return valid;
@@ -20,6 +20,7 @@ const emailRegex = RegExp(
 const passwordRegex = RegExp(
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@#!%*?&])[A-Za-z\d$@$!%*?&]{8,}$/
 );
+
 class SignUp extends Component {
   constructor(props) {
     super(props);
@@ -35,12 +36,13 @@ class SignUp extends Component {
         lastNameError: "",
         emailError: "",
         passwordError: "",
-        confirmPasswordError: ""
-      }
+        confirmPasswordError: "",
+      },
+      formInvaliderror: "",
     };
   }
 
-  handleChange = event => {
+  handleChange = (event) => {
     event.preventDefault();
     const { name, value } = event.target;
     const errors = this.state.errors;
@@ -77,10 +79,10 @@ class SignUp extends Component {
       default:
         break;
     }
-    this.setState({ errors, [name]: value }, () => console.log(this.state));
+    this.setState({ errors, [name]: value });
   };
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
     if (formValid(this.state)) {
       let user = {
@@ -88,7 +90,7 @@ class SignUp extends Component {
         password1: this.state.password,
         password2: this.state.confirmPassword,
         first_name: this.state.firstName,
-        last_name: this.state.lastName
+        last_name: this.state.lastName,
       };
 
       let url = "http://127.0.0.1:8000/rest-auth/registration/";
@@ -96,31 +98,31 @@ class SignUp extends Component {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json"
+          Accept: "application/json",
         },
-        body: JSON.stringify(user)
-      }).then(result => {
+        body: JSON.stringify(user),
+      }).then((result) => {
         if (result.ok) {
           this.setState({ isRegistered: true });
+          this.props.history.push("/signin");
         }
       });
     } else {
-      console.error(`Form Invalid`);
+      this.setState({ formInvaliderror: "Please, fill all details." });
     }
   };
   render() {
-    const { errors, isRegistered } = this.state;
+    const { errors, isRegistered, formInvaliderror } = this.state;
     return (
       <div className="container clearfix">
         <div className="Signup">
           <img className="logo" src={logo} alt="logo" />
-          <h3>
-            <p className="text-center">Sign Up</p>
-          </h3>
+          <h5>
+            <p className="text-center">Empowering OUR kids future</p>
+          </h5>
           <form onSubmit={this.handleSubmit} noValidate>
             <div className="register-form">
               <div className="form-label-group">
-                <label htmlFor="FirstName"></label>
                 <input
                   type="text"
                   className="form-control"
@@ -130,11 +132,11 @@ class SignUp extends Component {
                   required
                   autoFocus
                   onChange={this.handleChange}
+                  aria-label="First Name"
                 />
                 <div className="error">{errors.firstNameError}</div>
               </div>
               <div className="form-label-group">
-                <label htmlFor="LastName"></label>
                 <input
                   type="text"
                   className="form-control"
@@ -144,11 +146,11 @@ class SignUp extends Component {
                   required
                   autoFocus
                   onChange={this.handleChange}
+                  aria-label="Last Name"
                 />
                 <div className="error">{errors.lastNameError}</div>
               </div>
               <div className="form-label-group">
-                <label htmlFor="Email"></label>
                 <input
                   type="email"
                   className="form-control"
@@ -158,11 +160,11 @@ class SignUp extends Component {
                   required
                   autoFocus
                   onChange={this.handleChange}
+                  aria-label="Email"
                 />
                 <div className="error">{errors.emailError}</div>
               </div>
               <div className="form-label-group">
-                <label htmlFor="Password"></label>
                 <input
                   type="password"
                   className="form-control"
@@ -172,11 +174,11 @@ class SignUp extends Component {
                   required
                   autoFocus
                   onChange={this.handleChange}
+                  aria-label="Password"
                 />
                 <div className="error">{errors.passwordError}</div>
               </div>
               <div className="form-label-group">
-                <label htmlFor="ConfirmPassword"></label>
                 <input
                   type="password"
                   className="form-control"
@@ -186,35 +188,30 @@ class SignUp extends Component {
                   required
                   autoFocus
                   onChange={this.handleChange}
+                  aria-label="Confirm Password"
                 />
                 <span className="error">{errors.confirmPasswordError}</span>
               </div>
               <div className="form-group">
-                <div className="custom-control custom-checkbox">
-                  <input
-                    type="checkbox"
-                    className="custom-control-input"
-                    id="customCheck1"
-                  />
-                  <label
-                    className="custom-control-label"
-                    htmlFor="customCheck1"
-                  >
-                    You agree to Teenivo User Agreement, Privacy Policy and
-                    Cookie Policy
-                  </label>
+                <div className="agreement">
+                  <p>
+                    By clicking Join teenivo, You agree to teenivo User
+                    Agreement, Privacy Policy and Cookie Policy. Ypu may get
+                    email notifications. Learn More.
+                  </p>
                 </div>
               </div>
-              <button type="submit" className="btn btn-primary btn-block">
-                Submit
+              <button type="submit" className="btn btn-next btn-block">
+                Join teenivo
               </button>
+              <span className="error">{formInvaliderror}</span>
               <p>
                 {isRegistered
                   ? "Thank you for registering with us. Please confirm your account by clicking on link sent you on your email."
                   : ""}
               </p>
               <p className="forgot-password text-right">
-                Already registered? <Link to={"/sign-in"}>sign in</Link>
+                Already have an account? <Link to={"/signin"}>Sign in</Link>
               </p>
             </div>
           </form>

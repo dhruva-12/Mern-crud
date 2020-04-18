@@ -1,5 +1,4 @@
 .App-header {
-  background-color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,33 +24,15 @@
   display: inline-block;
   margin: 2%;
 }
-.Signup .register-form .forgot-password,
-.Signup .register-form .forgot-password a {
-  text-align: right;
-  font-size: 13px;
-  padding-top: 10px;
-  color: #504f4f;
-  margin: 0;
-}
-.Signup .register-form .forgot-password a {
-  color: #167bff;
-}
-.register-form .btn-primary {
-  margin-top: 10px;
-  background-color: #c30003;
-}
+
 .container {
   justify-content: center;
   align-items: center;
   display: flex;
   width: max-content;
 }
-.Signup .register-form .custom-control-label {
-  font-weight: 500;
-  margin: 10px;
-}
-.Signup .register-form .form-label-group .error {
-  color: red;
+.Signup .register-form .error {
+  color: #990033;
 }
 .Signin .logo {
   height: 120px;

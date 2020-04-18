@@ -30,7 +30,7 @@ export default class Feed extends Component {
           this.setState({ posts: data, isLoading: false });
         }
       });
-    fetch(`http://127.0.0.1:8000/rest-auth/user/`, {
+    fetch(`http://teenivoapi.herokuapp.com/rest-auth/user/`, {
       method: "GET",
       headers: {
         Authorization: "Token " + getToken(),
@@ -63,7 +63,7 @@ export default class Feed extends Component {
     if (user.length !== 0) {
       const id = user.id;
       axios
-        .get(`http://127.0.01.:8000/accounts/profilesId/${id}`)
+        .get(`http://teenivoapi.herokuapp.com/accounts/profilesId/${id}`)
         .then((response) => {
           if (response.statusText === "OK") {
             this.addPost(response.data.profile_id);
@@ -76,7 +76,7 @@ export default class Feed extends Component {
 
   addPost = (id) => {
     const post = { post_content: this.state.postContent, user_id: id };
-    const url = `http://127.0.0.1:8000/notification/addpost/`;
+    const url = `http://teenivoapi.herokuapp.com/notification/addpost/`;
     fetch(url, {
       method: "POST",
       headers: {
@@ -95,7 +95,7 @@ export default class Feed extends Component {
     const user = getUser();
     if (user.length !== 0) {
       const id = user.id;
-      const url = `http://127.0.0.1:8000/notification/posts/${id}`;
+      const url = `http://teenivoapi.herokuapp.com/notification/posts/${id}`;
       fetch(url, {
         method: "GET",
         headers: {
