@@ -1,8 +1,9 @@
-#root {
+.App {
   background-color: #e7caaa;
+  height: 850px;
 }
 p {
-  color: #990033;
+  color: #903749;
   margin: 5px;
 }
 .Signup input {
@@ -27,11 +28,11 @@ p {
   height: 200px;
 }
 .Signup .btn-next {
-  color: #990033;
-  border: 1px solid #990033;
+  color: #903749;
+  border: 1px solid #903749;
 }
 .Signup .btn-next:hover {
-  background-color: #990033;
+  background-color: #903749;
   color: white;
 }
 .agreement {
@@ -40,8 +41,7 @@ p {
 }
 .Signup,
 .Signin,
-.profile,
-.post-signup {
+.profile {
   transition: all 0.3s;
   width: 400px;
   padding: 1em;
@@ -58,21 +58,86 @@ p {
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   border: 1px solid transparent;
   background-color: transparent;
+  height: 48px;
 }
 .btn-first {
-  background-color: #990033;
+  background-color: #903749;
   color: white;
 }
 .btn-first:hover {
-  color: #990033;
-  border: 1px solid #990033;
+  color: #903749;
+  border: 1px solid #903749;
   background-color: transparent;
 }
 .btn-second {
-  color: #990033;
-  border: #990033 solid 1px;
+  color: #903749;
+  border: #903749 solid 1px;
 }
 .btn-second:hover {
-  background-color: #990033;
+  background-color: #903749;
   color: white;
+}
+.post-signup {
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+}
+.post-signup .logo {
+  width: 126px;
+  height: 111px;
+  margin-right: 100px;
+}
+.personal-profile {
+  display: flex;
+  flex-direction: row;
+  margin: 1em;
+}
+.personal-profile .logo {
+  width: 126px;
+  height: 111px;
+  margin-right: 100px;
+}
+.dob,
+.gender {
+  padding-left: 40px;
+}
+.subtext {
+  color: #505050;
+}
+.group-box {
+  border: 1px solid #505050;
+  padding: 1em;
+  margin: 11px 0 11px 0;
+}
+.profile-text {
+  display: flex;
+  flex-direction: row;
+  margin: 1em;
+}
+.profile-text .profile-text-inner {
+  width: 350px;
+}
+.profile-text .logo {
+  width: 126px;
+  height: 111px;
+  margin-right: 100px;
+}
+.text-input input,
+.text-input textarea {
+  margin: 11px 0 11px 0;
+  width: 100%;
+}
+.add-photo .user-detail {
+  background-color: #d7d7d7;
+  margin: 11px 0 11px 0;
+  padding: 1em;
+}
+.footer {
+  margin-bottom: -9em;
+}
+.line {
+  border: 0.5px solid black;
+}
+.footer-note {
+  color: black;
 }

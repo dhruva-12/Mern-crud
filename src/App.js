@@ -10,19 +10,20 @@ import {
 import {
   Signup,
   login,
-  CreateProfile,
+  Create,
   Feed,
   mynetwork,
   ChangePassword,
   MyProfile,
-  SearchPeople,
   ForgotPass,
   Profile,
   BlockedUsers,
   PostSignup,
+  ProfileType,
+  Footer,
 } from "./components";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import { getToken } from "./Utils/Common";
+// import { getToken } from "./Utils/Common";
 import connections from "./components/connections";
 import main from "./components/main";
 
@@ -56,7 +57,7 @@ export class App extends Component {
               <Route path="/forgotpassword" component={ForgotPass} />
               {/* <Route path="/noemail" component={noemail} /> */}
               <Route path="/Signup" component={Signup} />
-              <Route path="/create-profile" component={CreateProfile} />
+              <Route path="/create-profile" component={Create} />
               <Route path="/feed" component={Feed} />
               <Route path="/mynetwork" component={mynetwork} />
               <Route path="/change-password" component={ChangePassword} />
@@ -65,7 +66,10 @@ export class App extends Component {
               <Route path="/users/blocked" component={BlockedUsers} />
               <Route path="/profile/:first_name/:user_id" component={Profile} />
               <Route path="/email-confirmed" component={PostSignup} />
+              <Route path="/profile-type" component={ProfileType} />
             </Switch>
+
+            <Footer></Footer>
           </header>
         </Router>
       </div>

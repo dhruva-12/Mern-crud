@@ -29,7 +29,7 @@ export default class Login extends Component {
     e.preventDefault();
     const user = { email: this.state.email, password: this.state.password };
     this.setState({ error: null, isLoading: true });
-    let url = "https://teenivoapi.herokuapp.com/rest-auth/login/";
+    let url = "http://127.0.0.1:8000/rest-auth/login/";
 
     function handleErrors(response) {
       if (!response.ok) {

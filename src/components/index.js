@@ -10,3 +10,6 @@ export { default as ForgotPass } from "./ForgotPass";
 export { default as Profile } from "./Profile";
 export { default as BlockedUsers } from "./BlockedUsers";
 export { default as PostSignup } from "./PostSignup";
+export { default as ProfileType } from "./ProfileType";
+export { default as Create } from "./Create";
+export { default as Footer } from "./Footer";

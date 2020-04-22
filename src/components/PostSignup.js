@@ -13,7 +13,7 @@ export default function PostSignup() {
   }, [isLoading]);
 
   const getUsers = () => {
-    fetch(`http://teenivoapi.herokuapp.com/rest-auth/user/`, {
+    fetch(`http://127.0.0.1:8000/rest-auth/user/`, {
       method: "GET",
       headers: {
         Authorization: "Token " + getToken(),
@@ -22,9 +22,10 @@ export default function PostSignup() {
       .then((response) => response.json())
       .then((data) => {
         setUsers(data);
+        setUser(JSON.stringify(data));
+        console.log(data);
         setIsLoading(false);
-      })
-      .then(() => setUser(JSON.stringify(users)));
+      });
   };
   if (isLoading) {
     return <p>Loading ...</p>;
@@ -32,22 +33,28 @@ export default function PostSignup() {
   return (
     <div className="container clearfix">
       <div className="post-signup">
-        <img className="logo" src={logo} alt="logo" />
-        <h3>
-          <p className="text-center">Email Confirmed</p>
-        </h3>
         <div>
-          <p className="text-center">
-            Thank you for confirming your email. While admins review your signup
-            please create your profile.
-          </p>
+          <img className="logo" src={logo} alt="logo" />
         </div>
         <div>
-          <Link to={"/create-profile"}>
-            <button type="submit" className="btn-first btns btn-block">
-              Create Profile
-            </button>
-          </Link>
+          <h5>
+            <p className="text-center" style={{ fontSize: "18px" }}>
+              Email Confirmed
+            </p>
+          </h5>
+          <div>
+            <p className="text-center subtext">
+              Thank you for confirming your email. While admins review your
+              signup please create your profile.
+            </p>
+          </div>
+          <div>
+            <Link to={"/profile-type"}>
+              <button type="submit" className="btn-first btns btn-block">
+                Create Profile
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
