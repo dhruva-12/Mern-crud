@@ -256,6 +256,12 @@ span {
   background-color: #903749;
 }
 
+
+.photo1{
+  width:216px;
+  height:50px;
+  z-index: -1;
+}
 .searchbar .border {
   background-color: rgb(255, 255, 255);
   width: 285px;

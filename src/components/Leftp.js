@@ -40,7 +40,12 @@ class Leftp extends React.Component {
           <img
             src={users.header_photo}
             className="photo"
-            alt="profie of user"
+            alt="profile of user"
+          ></img>
+           <img
+            src={users.background_photo}
+            className="photo1"
+            alt="background photo of user"
           ></img>
         </div>
         <div className="midbox">
