@@ -12,7 +12,7 @@ import {
   login,
   Create,
   Feed,
-  mynetwork,
+  Requests,
   ChangePassword,
   MyProfile,
   ForgotPass,
@@ -21,11 +21,12 @@ import {
   PostSignup,
   ProfileType,
   Footer,
+  Connections,
 } from "./components";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-// import { getToken } from "./Utils/Common";
-import connections from "./components/connections";
 import main from "./components/main";
+import Layout from "./components/Layout";
+import Nav from "./components/Nav";
 
 export class App extends Component {
   render() {
@@ -58,18 +59,18 @@ export class App extends Component {
               {/* <Route path="/noemail" component={noemail} /> */}
               <Route path="/Signup" component={Signup} />
               <Route path="/create-profile" component={Create} />
-              <Route path="/feed" component={Feed} />
-              <Route path="/mynetwork" component={mynetwork} />
+              <Route path="/feed" component={Layout} />
+              <Route path="/mynetwork/connections" component={Connections} />
+              <Route path="/mynetwork" component={Requests} />
               <Route path="/change-password" component={ChangePassword} />
-              <Route path="/connections" component={connections} />
               <Route path="/myProfile" component={MyProfile} />
               <Route path="/users/blocked" component={BlockedUsers} />
               <Route path="/profile/:first_name/:user_id" component={Profile} />
               <Route path="/email-confirmed" component={PostSignup} />
               <Route path="/profile-type" component={ProfileType} />
+              {/* <Route path="/Layout" component={Layout} /> */}
+              <Route path="/Nav" component={Nav} />
             </Switch>
-
-            <Footer></Footer>
           </header>
         </Router>
       </div>

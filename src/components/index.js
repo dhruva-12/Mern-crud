@@ -13,3 +13,6 @@ export { default as PostSignup } from "./PostSignup";
 export { default as ProfileType } from "./ProfileType";
 export { default as Create } from "./Create";
 export { default as Footer } from "./Footer";
+export { default as Connections } from "./Connections/Connection";
+export { default as Requests } from "./Requests/Requests";
+export { default as PrimarySearchAppBar } from "./Appbar/Appbar";

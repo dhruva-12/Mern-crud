@@ -29,7 +29,7 @@ export default class Login extends Component {
     e.preventDefault();
     const user = { email: this.state.email, password: this.state.password };
     this.setState({ error: null, isLoading: true });
-    let url = "http://127.0.0.1:8000/rest-auth/login/";
+    let url = "https://teenivoapi.herokuapp.com/rest-auth/login/";
 
     function handleErrors(response) {
       if (!response.ok) {
@@ -63,66 +63,72 @@ export default class Login extends Component {
     return (
       <div className="container clearfix">
         <div className="Signin">
-          <img className="logo" src={logo} alt="logo" />
-          <h3>
-            <p className="text-center">Empowering OUR kids future</p>
-          </h3>
-          <form>
-            <div className="register-form">
-              <div className="form-label-group">
-                <input
-                  type="email"
-                  className="form-control"
-                  id="Email"
-                  name="email"
-                  placeholder="Email"
-                  required
-                  autoFocus
-                  onChange={this.handleChange}
-                  label="Email"
-                />
-              </div>
-              <div className="form-label-group">
-                <input
-                  type="password"
-                  className="form-control"
-                  id="Password"
-                  name="password"
-                  placeholder="Password"
-                  required
-                  autoFocus
-                  onChange={this.handleChange}
-                  label="password"
-                />
-              </div>
-              {error && (
-                <>
-                  <span style={{ color: "#990033" }}>{error}</span>
-                  <br />
-                </>
-              )}
-              {setUserSession(this.state.key)}
-              <br />
-              <button
-                type="submit"
-                className="btns btn-second btn-block"
-                value={isLoading ? "Loading..." : "Sign In"}
-                onClick={this.handleLogin}
-                disabled={isLoading}
-              >
-                Sign In
-              </button>
-              {this.redirectToProfile()}
-              <div>
-                <div className="Sign-Up" style={{ float: "left" }}>
-                  <Link to={"/signup"}> Sign Up</Link>
+          <div className="logo">
+            <img className="teeniv-logo" src={logo} alt="logo" />
+          </div>
+          <div className="main-content">
+            <h5>
+              <b>
+                <p className="text-center">Empowering OUR kids future</p>
+              </b>
+            </h5>
+            <form>
+              <div className="register-form">
+                <div className="form-label-group">
+                  <input
+                    type="email"
+                    className="form-control input"
+                    id="Email"
+                    name="email"
+                    placeholder="Email"
+                    required
+                    autoFocus
+                    onChange={this.handleChange}
+                    label="Email"
+                  />
                 </div>
-                <div className="forgot-password" style={{ float: "right" }}>
-                  <Link to={"/forgotpassword"}> Forgot Password ?</Link>
+                <div className="form-label-group">
+                  <input
+                    type="password"
+                    className="form-control input"
+                    id="Password"
+                    name="password"
+                    placeholder="Password"
+                    required
+                    autoFocus
+                    onChange={this.handleChange}
+                    label="password"
+                  />
+                </div>
+                {error && (
+                  <>
+                    <span style={{ color: "#990033" }}>{error}</span>
+                    <br />
+                  </>
+                )}
+                {setUserSession(this.state.key)}
+                <br />
+                <button
+                  type="submit"
+                  className="btns btn-second btn-block"
+                  value={isLoading ? "Loading..." : "Sign In"}
+                  onClick={this.handleLogin}
+                  disabled={isLoading}
+                >
+                  Sign In
+                </button>
+                {this.redirectToProfile()}
+                <div>
+                  <div className="Sign-Up" style={{ float: "left" }}>
+                    <Link to={"/signup"}> Sign Up</Link>
+                  </div>
+                  <div className="forgot-password" style={{ float: "right" }}>
+                    <Link to={"/forgotpassword"}> Forgot Password ?</Link>
+                  </div>
                 </div>
               </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
     );

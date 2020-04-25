@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 export default function main() {
   return (
     <div className="home">
-      <div className="logo-img">
-        <img className="logo" src={logo} alt="teenivo logo"></img>
+      <div>
+        <img className="teenivo-logo" src={logo} alt="teenivo logo"></img>
       </div>
       <div>
         <Link to={"/signup"}>

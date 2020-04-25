@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { getUser } from "../Utils/Common";
-import Popup from "reactjs-popup";
+import { Footer } from "../components";
+import { PrimarySearchAppBar } from ".";
 
 const u = getUser();
 export class Profile extends Component {
@@ -25,7 +26,7 @@ export class Profile extends Component {
       match: { params },
     } = this.props;
     //console.log(params.id);
-    const url = `http://127.0.01.:8000/accounts/profilesId/${params.user_id}`;
+    const url = `http://teenivoapi.herokuapp.com/accounts/profilesId/${params.user_id}`;
     axios.get(url).then((response) =>
       this.setState({
         users: response.data,
@@ -34,14 +35,16 @@ export class Profile extends Component {
       })
     );
     axios
-      .get(`http://127.0.0.1:8000/addfriend/friend/${params.user_id}`)
+      .get(`http://teenivoapi.herokuapp.com/addfriend/friend/${params.user_id}`)
       .then((response) =>
         this.setState({
           totalConn: response.data.length,
         })
       );
     axios
-      .get(`http://127.0.0.1:8000/addfriend/getFollowers/${params.user_id}`)
+      .get(
+        `http://teenivoapi.herokuapp.com/addfriend/getFollowers/${params.user_id}`
+      )
       .then((response) =>
         this.setState({
           totalFollowers: response.data.length,
@@ -50,7 +53,7 @@ export class Profile extends Component {
     if (u !== null) {
       axios
         .get(
-          `http://127.0.0.1:8000/addfriend/isFollow/${u.id}/${params.user_id}`
+          `http://teenivoapi.herokuapp.com/addfriend/isFollow/${u.id}/${params.user_id}`
         )
         .then((response) => {
           if (response.data === true) {
@@ -59,16 +62,16 @@ export class Profile extends Component {
         });
       axios
         .get(
-          `http://127.0.0.1:8000/addfriend/isFriend/${u.id}/${params.user_id}`
+          `http://teenivoapi.herokuapp.com/addfriend/isFriend/${u.id}/${params.user_id}`
         )
         .then((response) => {
           if (response.data === true) {
             this.setState({ isFriend: true });
           }
         });
-        axios
+      axios
         .get(
-          `http://127.0.0.1:8000/addfriend/isBlocked/${u.id}/${params.user_id}`
+          `http://teenivoapi.herokuapp.com/addfriend/isBlocked/${u.id}/${params.user_id}`
         )
         .then((response) => {
           if (response.data === true) {
@@ -83,7 +86,7 @@ export class Profile extends Component {
     if (u !== null) {
       form_data.append("from_user", u.id);
       form_data.append("to_user", id);
-      const url = `http://127.0.01.:8000/addfriend/allRequest`;
+      const url = `http://teenivoapi.herokuapp.com/addfriend/allRequest`;
       axios
         .post(url, form_data, {
           headers: {
@@ -106,7 +109,7 @@ export class Profile extends Component {
   removeConnection = (id) => {
     if (u !== null) {
       fetch(
-        `http://127.0.0.1:8000/addfriend/removeconnection/${u.id}/${id}`
+        `http://teenivoapi.herokuapp.com/removeconnection/${u.id}/${id}`
       ).then((response) => {
         if (response.statusText === "OK") {
           this.setState({ isSent: false, isFriend: false });
@@ -121,7 +124,7 @@ export class Profile extends Component {
       if (isFollow === "Follow") {
         form_data.append("follower", u.id);
         form_data.append("followee", id);
-        const url = `http://127.0.01.:8000/addfriend/addFollower`;
+        const url = `http://teenivoapi.herokuapp.com/addfriend/addFollower`;
         axios
           .post(url, form_data, {
             headers: {
@@ -137,7 +140,7 @@ export class Profile extends Component {
             console.log(error);
           });
       } else {
-        const url = `http://127.0.01.:8000/addfriend/removeFollower/${u.id}/${id}`;
+        const url = `http://teenivoapi.herokuapp.com/addfriend/removeFollower/${u.id}/${id}`;
         axios
           .get(url)
           .then((response) => {
@@ -161,7 +164,7 @@ export class Profile extends Component {
       if (isBlock === "Block") {
         form_data.append("blocker", u.id);
         form_data.append("blocked", id);
-        const url = `http://127.0.01.:8000/addfriend/blockUser`;
+        const url = `http://teenivoapi.herokuapp.com/addfriend/blockUser`;
         axios
           .post(url, form_data, {
             headers: {
@@ -177,7 +180,7 @@ export class Profile extends Component {
             console.log(error);
           });
       } else {
-        const url = `http://127.0.01.:8000/addfriend/removeBlock/${u.id}/${id}`;
+        const url = `http://teenivoapi.herokuapp.com/addfriend/removeBlock/${u.id}/${id}`;
         axios
           .get(url)
           .then((response) => {
@@ -214,95 +217,101 @@ export class Profile extends Component {
       return <p>Unblock to see the Profile</p>;
     }
     return (
-      <div className="myprofile">
-        <div className="profile-imgs">
-          <img
-            className="background-img"
-            src={users.background_photo}
-            alt="background of user"
-          ></img>
-          <img
-            className="profile-img"
-            src={users.header_photo}
-            alt="profie of user"
-          ></img>
-          <div className="user-info edit-profile">
-            <ul className="flex-1">
-              <li>
-                {user.first_name} {user.last_name}
-              </li>
-            </ul>
-            <h2 className="headline">{users.headline}</h2>
-            <ul className="list">
-              <li className="inline-block">
-                {users.city}, {users.state}, {users.country}
-              </li>
-              <li className="inline-block">* {totalConn} Connections</li>
-              <li className="inline-block">* {totalFollowers} Followers</li>
-            </ul>
-            <ul className="list">
-              <li className="inline-block">
-                {isFriend ? (
+      <div>
+        <PrimarySearchAppBar></PrimarySearchAppBar>
+        <div className="myprofile">
+          <div className="profile-imgs">
+            <img
+              className="background-img"
+              src={users.background_photo}
+              alt="background of user"
+            ></img>
+            <img
+              className="profile-img"
+              src={users.header_photo}
+              alt="profie of user"
+            ></img>
+            <div className="user-info edit-profile">
+              <ul className="flex-1">
+                <li>
+                  {user.first_name} {user.last_name}
+                </li>
+              </ul>
+              <h2 className="headline">{users.headline}</h2>
+              <ul className="list">
+                <li className="inline-block">
+                  {users.city}, {users.state}, {users.country}
+                </li>
+                <li className="inline-block">* {totalConn} Connections</li>
+                <li className="inline-block">* {totalFollowers} Followers</li>
+              </ul>
+              <ul className="list">
+                <li className="inline-block">
+                  {isFriend ? (
+                    <input
+                      type="button"
+                      className="btns btn-first"
+                      onClick={() => this.removeConnection(users.user_id.id)}
+                      value="Remove Connection"
+                    />
+                  ) : (
+                    <input
+                      type="button"
+                      className="btns btn-first"
+                      onClick={() => this.handleClick(users.user_id.id)}
+                      value={!isSent ? "Connect" : "Pending"}
+                      disabled={isSent}
+                    />
+                  )}
+                </li>
+                <li className="inline-block">
                   <input
                     type="button"
-                    className="btn btn-primary"
-                    onClick={() => this.removeConnection(users.user_id.id)}
-                    value="Remove Connection"
+                    className="btns btn-first"
+                    value={isFollow}
+                    onClick={() =>
+                      this.handleFollow(users.user_id.id, isFollow)
+                    }
                   />
-                ) : (
+                </li>
+                <li className="inline-block">
                   <input
                     type="button"
-                    className="btn btn-primary"
-                    onClick={() => this.handleClick(users.user_id.id)}
-                    value={!isSent ? "Connect" : "Pending"}
-                    disabled={isSent}
+                    className="btns btn-first"
+                    value={isBlock}
+                    onClick={() => this.handleBlock(users.user_id.id, isBlock)}
                   />
-                )}
-              </li>
-              <li className="inline-block">
-                <input
-                  type="button"
-                  className="btn btn-primary"
-                  value={isFollow}
-                  onClick={() => this.handleFollow(users.user_id.id, isFollow)}
-                />
-              </li>
-              <li className="inline-block">
-                <input
-                  type="button"
-                  className="btn btn-primary"
-                  value={isBlock}
-                  onClick={() => this.handleBlock(users.user_id.id, isBlock)}
-                />
-              </li>
-            </ul>
+                </li>
+              </ul>
+            </div>
+            <div className="addFriend"></div>
           </div>
-          <div className="addFriend"></div>
-        </div>
-        <div className="block mtb">
-          <div className="">
-            <header className="justify-space-between">
-              <h2 className="inline-block t-20">Summary</h2>
-            </header>
-            <div>{users.summary_text}</div>
+          <div className="block mtb">
+            <div className="">
+              <header className="justify-space-between">
+                <h2 className="inline-block t-20">Summary</h2>
+              </header>
+              <div>{users.summary_text}</div>
+            </div>
           </div>
-        </div>
-        <div className="block mtb">
-          <div className="">
-            <header className="justify-space-between">
-              <h2 className="inline-block t-20">About</h2>
-            </header>
-            <div>{users.about_profile}</div>
+          <div className="block mtb">
+            <div className="">
+              <header className="justify-space-between">
+                <h2 className="inline-block t-20">About</h2>
+              </header>
+              <div>{users.about_profile}</div>
+            </div>
+          </div>
+          <div className="block mtb">
+            <div className="">
+              <header className="justify-space-between">
+                <h2 className="inline-block t-20">Skills</h2>
+              </header>
+              <div>{users.skills}</div>
+            </div>
           </div>
         </div>
-        <div className="block mtb">
-          <div className="">
-            <header className="justify-space-between">
-              <h2 className="inline-block t-20">Skills</h2>
-            </header>
-            <div>{users.skills}</div>
-          </div>
-        </div>
+        <Footer></Footer>
       </div>
     );
   }

@@ -93,7 +93,7 @@ class SignUp extends Component {
         last_name: this.state.lastName,
       };
 
-      let url = "http://127.0.0.1:8000/rest-auth/registration/";
+      let url = "https://teenivoapi.herokuapp.com/rest-auth/registration/";
       fetch(url, {
         method: "POST",
         headers: {
@@ -116,105 +116,111 @@ class SignUp extends Component {
     return (
       <div className="container clearfix">
         <div className="Signup">
-          <img className="logo" src={logo} alt="logo" />
-          <h5>
-            <p className="text-center">Empowering OUR kids future</p>
-          </h5>
-          <form onSubmit={this.handleSubmit} noValidate>
-            <div className="register-form">
-              <div className="form-label-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="FirstName"
-                  name="firstName"
-                  placeholder="First Name"
-                  required
-                  autoFocus
-                  onChange={this.handleChange}
-                  aria-label="First Name"
-                />
-                <div className="error">{errors.firstNameError}</div>
-              </div>
-              <div className="form-label-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="LastName"
-                  name="lastName"
-                  placeholder="Last Name"
-                  required
-                  autoFocus
-                  onChange={this.handleChange}
-                  aria-label="Last Name"
-                />
-                <div className="error">{errors.lastNameError}</div>
-              </div>
-              <div className="form-label-group">
-                <input
-                  type="email"
-                  className="form-control"
-                  id="Email"
-                  name="email"
-                  placeholder="Email"
-                  required
-                  autoFocus
-                  onChange={this.handleChange}
-                  aria-label="Email"
-                />
-                <div className="error">{errors.emailError}</div>
-              </div>
-              <div className="form-label-group">
-                <input
-                  type="password"
-                  className="form-control"
-                  id="Password"
-                  name="password"
-                  placeholder="Password"
-                  required
-                  autoFocus
-                  onChange={this.handleChange}
-                  aria-label="Password"
-                />
-                <div className="error">{errors.passwordError}</div>
-              </div>
-              <div className="form-label-group">
-                <input
-                  type="password"
-                  className="form-control"
-                  id="ConfirmPassword"
-                  placeholder="Confirm Password"
-                  name="confirmPassword"
-                  required
-                  autoFocus
-                  onChange={this.handleChange}
-                  aria-label="Confirm Password"
-                />
-                <span className="error">{errors.confirmPasswordError}</span>
-              </div>
-              <div className="form-group">
-                <div className="agreement">
-                  <p>
-                    By clicking Join teenivo, You agree to teenivo User
-                    Agreement, Privacy Policy and Cookie Policy. Ypu may get
-                    email notifications. Learn More.
-                  </p>
+          <div className="logo">
+            <img className="teenivo-logo" src={logo} alt="logo" />
+          </div>
+          <div className="main-content">
+            <h5>
+              <b>
+                <p className="text-center">Empowering OUR kids future</p>
+              </b>
+            </h5>
+            <form onSubmit={this.handleSubmit} noValidate>
+              <div className="register-form">
+                <div className="form-label-group">
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="FirstName"
+                    name="firstName"
+                    placeholder="First Name"
+                    required
+                    autoFocus
+                    onChange={this.handleChange}
+                    aria-label="First Name"
+                  />
+                  <div className="error">{errors.firstNameError}</div>
                 </div>
+                <div className="form-label-group">
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="LastName"
+                    name="lastName"
+                    placeholder="Last Name"
+                    required
+                    autoFocus
+                    onChange={this.handleChange}
+                    aria-label="Last Name"
+                  />
+                  <div className="error">{errors.lastNameError}</div>
+                </div>
+                <div className="form-label-group">
+                  <input
+                    type="email"
+                    className="form-control"
+                    id="Email"
+                    name="email"
+                    placeholder="Email"
+                    required
+                    autoFocus
+                    onChange={this.handleChange}
+                    aria-label="Email"
+                  />
+                  <div className="error">{errors.emailError}</div>
+                </div>
+                <div className="form-label-group">
+                  <input
+                    type="password"
+                    className="form-control"
+                    id="Password"
+                    name="password"
+                    placeholder="Password"
+                    required
+                    autoFocus
+                    onChange={this.handleChange}
+                    aria-label="Password"
+                  />
+                  <div className="error">{errors.passwordError}</div>
+                </div>
+                <div className="form-label-group">
+                  <input
+                    type="password"
+                    className="form-control"
+                    id="ConfirmPassword"
+                    placeholder="Confirm Password"
+                    name="confirmPassword"
+                    required
+                    autoFocus
+                    onChange={this.handleChange}
+                    aria-label="Confirm Password"
+                  />
+                  <span className="error">{errors.confirmPasswordError}</span>
+                </div>
+                <div className="form-group">
+                  <div className="agreement">
+                    <p>
+                      By clicking Join teenivo, You agree to teenivo User
+                      Agreement, Privacy Policy and Cookie Policy. Ypu may get
+                      email notifications. Learn More.
+                    </p>
+                  </div>
+                </div>
+                <button type="submit" className="btns btn-second btn-block">
+                  Join teenivo
+                </button>
+                <span className="error">{formInvaliderror}</span>
+                <p>
+                  {isRegistered
+                    ? "Thank you for registering with us. Please confirm your account by clicking on link sent you on your email."
+                    : ""}
+                </p>
+                <p className="forgot-password text-right">
+                  Already have an account? <Link to={"/signin"}>Sign in</Link>
+                </p>
               </div>
-              <button type="submit" className="btn btn-next btn-block">
-                Join teenivo
-              </button>
-              <span className="error">{formInvaliderror}</span>
-              <p>
-                {isRegistered
-                  ? "Thank you for registering with us. Please confirm your account by clicking on link sent you on your email."
-                  : ""}
-              </p>
-              <p className="forgot-password text-right">
-                Already have an account? <Link to={"/signin"}>Sign in</Link>
-              </p>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
     );

@@ -1,13 +1,38 @@
 .App {
   background-color: #e7caaa;
-  height: 850px;
+  min-height: 100%;
+}
+body {
+  font-family: "Segoe UI";
 }
 p {
   color: #903749;
   margin: 5px;
 }
+.logo {
+  height: 111px;
+  position: absolute;
+  top: 66px;
+  left: 212px;
+  margin-right: 150px;
+}
+.container {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: 500px;
+}
+.teenivo-logo {
+  height: 111px;
+  width: 126px;
+  margin: 2%;
+}
 .Signup input {
-  margin: 5px 0 5px 0;
+  margin: 11px 0 11px 0;
+  background-color: #e3e0d7;
+}
+.Signup input:focus {
+  background-color: #e3e0d7;
 }
 .Signup .register-form .forgot-password {
   font-size: 16px;
@@ -15,25 +40,26 @@ p {
 .Signup .register-form .forgot-password a {
   color: #0050b9;
 }
+.main-content {
+  position: relative;
+  top: 97px;
+}
+.Signin .logo img {
+  height: 111px;
+  width: 126px;
+  margin: 2%;
+}
 .Signin input {
-  margin: 5px 0 5px 0;
+  margin: 11px 0 11px 0;
+  background-color: #e3e0d7;
+}
+.Signin input:focus {
+  background-color: #e3e0d7;
 }
 .home div {
   display: flex;
   flex-direction: column;
   margin: 2em;
-}
-.logo {
-  width: 200px;
-  height: 200px;
-}
-.Signup .btn-next {
-  color: #903749;
-  border: 1px solid #903749;
-}
-.Signup .btn-next:hover {
-  background-color: #903749;
-  color: white;
 }
 .agreement {
   font-size: 13px;
@@ -82,11 +108,6 @@ p {
   flex-direction: row;
   width: 50%;
 }
-.post-signup .logo {
-  width: 126px;
-  height: 111px;
-  margin-right: 100px;
-}
 .personal-profile {
   display: flex;
   flex-direction: row;
@@ -106,8 +127,8 @@ p {
 }
 .group-box {
   border: 1px solid #505050;
-  padding: 1em;
-  margin: 11px 0 11px 0;
+  padding: 0.5em;
+  margin: 9px 0 9px 0;
 }
 .profile-text {
   display: flex;
@@ -126,6 +147,7 @@ p {
 .text-input textarea {
   margin: 11px 0 11px 0;
   width: 100%;
+  background-color: #e3e0d7;
 }
 .add-photo .user-detail {
   background-color: #d7d7d7;
@@ -133,11 +155,55 @@ p {
   padding: 1em;
 }
 .footer {
-  margin-bottom: -9em;
+  bottom: 0em;
+  position: relative;
 }
 .line {
   border: 0.5px solid black;
 }
 .footer-note {
   color: black;
+}
+.footer .footer-img {
+  position: relative;
+  left: 100px;
+}
+.connection {
+  width: 617px;
+  background-color: #e3e0d7;
+  padding: 6px;
+  position: relative;
+  margin: 50px;
+  left: 65px;
+}
+
+.connection-list .card {
+  background-color: #f2f2f2;
+}
+.show-more {
+  width: 50px;
+  height: 50px;
+}
+.mynetwork .card {
+  background-color: #e3e0d7;
+}
+.MuiFormControlLabel-root {
+  margin: 0em;
+}
+.mypoint-icon label {
+  font-size: 14px;
+}
+.mypoint-icon img {
+  width: 20px;
+  justify-content: center;
+}
+.myprofile {
+  position: relative;
+  left: 75px;
+}
+.myprofile {
+  background-color: #e3e0d7;
+}
+.myprofile .profile-imgs {
+  background-color: #f2f2f2;
 }

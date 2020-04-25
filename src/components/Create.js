@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import { getUser } from "../Utils/Common";
-import { Link } from "react-router-dom";
 import {
   Radio,
   RadioGroup,
@@ -14,8 +12,10 @@ import {
   KeyboardDatePicker,
 } from "@material-ui/pickers";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import { getUser } from "../Utils/Common";
 import axios from "axios";
 import logo from "../images/teenivo-logo.png";
+
 const user = getUser();
 const theme = createMuiTheme({
   palette: {
@@ -25,21 +25,21 @@ const theme = createMuiTheme({
   },
 });
 
-class Create extends Component {
+class Form extends Component {
   state = {
     gender: "male",
     selectedDate: new Date(),
     step: 1,
-    Country: null,
-    State: null,
-    City: null,
-    Headline: null,
-    SummaryText: null,
-    AboutProfile: null,
-    Code: null,
-    Phone: null,
-    Avatar: null,
-    BackgroundImage: null,
+    Country: "",
+    State: "",
+    City: "",
+    Headline: "",
+    SummaryText: "",
+    AboutProfile: "",
+    Code: "",
+    Phone: "",
+    Avatar: "",
+    BackgroundImage: "",
   };
 
   handleChange = (event) => {
@@ -62,7 +62,6 @@ class Create extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     let phone = this.state.Code + this.state.Phone;
-    console.log(phone);
     let form_data = new FormData();
     form_data.append("header_photo", this.state.Avatar, this.state.Avatar.name);
     if (user.length !== 0) {
@@ -73,14 +72,14 @@ class Create extends Component {
       form_data.append("country", this.state.Country);
       form_data.append("state", this.state.State);
       form_data.append("city", this.state.City);
-      form_data.append("gender", this.state.value);
+      form_data.append("gender", this.state.gender);
       form_data.append("headline", this.state.Headline);
       form_data.append("summary_text", this.state.SummaryText);
-      form_data.append("about_profile", this.state.AboutProfie);
+      form_data.append("about_profile", this.state.AboutProfile);
       form_data.append("phonenumber", phone);
       form_data.append("skills", this.state.Skills);
     }
-    let url = "http://127.0.0.1:8000/accounts/profiles/";
+    let url = "https://teenivoapi.herokuapp.com/accounts/profiles/";
 
     axios
       .post(url, form_data, {
@@ -166,6 +165,7 @@ class Create extends Component {
               className="form-control"
               placeholder="Country"
               name="Country"
+              value={this.state.Country}
               onChange={this.handleChange}
             />
             <input
@@ -173,6 +173,7 @@ class Create extends Component {
               className="form-control"
               placeholder="Province/State"
               name="State"
+              value={this.state.State}
               onChange={this.handleChange}
             />
 
@@ -181,6 +182,7 @@ class Create extends Component {
               placeholder="City"
               className="form-control"
               name="City"
+              value={this.state.City}
               onChange={this.handleChange}
             />
           </div>
@@ -224,6 +226,7 @@ class Create extends Component {
               className="form-control"
               placeholder="Enter your headline text"
               name="Headline"
+              value={this.state.Headline}
               onChange={this.handleChange}
             />
             <input
@@ -231,6 +234,7 @@ class Create extends Component {
               className="form-control"
               placeholder="Enter your summary text"
               name="SummaryText"
+              value={this.state.SummaryText}
               onChange={this.handleChange}
             />
 
@@ -239,6 +243,7 @@ class Create extends Component {
               name="AboutProfile"
               placeholder="About yours"
               rows="5"
+              value={this.state.AboutProfile}
               onChange={this.handleChange}
             ></textarea>
           </div>
@@ -267,8 +272,8 @@ class Create extends Component {
     const { gender, selectedDate } = this.state;
     return (
       <div className="personal-profile">
-        <div>
-          <img className="logo" src={logo} alt="logo" />
+        <div className="logo">
+          <img className="teenivo-logo" src={logo} alt="logo" />
         </div>
         <div>
           <div>
@@ -298,17 +303,17 @@ class Create extends Component {
                   >
                     <FormControlLabel
                       value="male"
-                      control={<Radio />}
+                      control={<Radio color="primary" />}
                       label="Male"
                     />
                     <FormControlLabel
                       value="female"
-                      control={<Radio />}
+                      control={<Radio color="primary" />}
                       label="Female"
                     />
                     <FormControlLabel
                       value="other"
-                      control={<Radio />}
+                      control={<Radio color="primary" padding="5px" />}
                       label="Other"
                     />
                   </RadioGroup>
@@ -345,6 +350,7 @@ class Create extends Component {
                       className="form-control"
                       type="text"
                       name="Code"
+                      value={this.state.Code}
                       onChange={this.handleChange}
                     />
                   </td>
@@ -353,6 +359,7 @@ class Create extends Component {
                       className="form-control"
                       type="text"
                       name="Phone"
+                      value={this.state.Phone}
                       onChange={this.handleChange}
                     />
                   </td>
@@ -404,7 +411,7 @@ class Create extends Component {
   render() {
     const { step } = this.state;
     if (step === 1) {
-      return <div className="container clearfix">{this.subForm1()}</div>;
+      return <div className="clearfix">{this.subForm1()}</div>;
     } else if (step === 2) {
       return <div className="container clearfix">{this.subForm2()}</div>;
     } else if (step === 3) {
@@ -415,4 +422,4 @@ class Create extends Component {
   }
 }
 
-export default Create;
+export default Form;

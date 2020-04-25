@@ -9,7 +9,7 @@ export default function ProfileType() {
         <div>
           <img className="logo" src={logo} alt="logo" />
         </div>
-        <div>
+        <div className="main-content">
           <h5>
             <p className="text-center" style={{ fontSize: "18px" }}>
               Choose the type of profile

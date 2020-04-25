@@ -8,7 +8,7 @@ export default function Footer() {
         width: window.innerWidth,
       }}
     >
-      <div>
+      <div className="footer-img">
         <img src={logotext} alt="teenivo text"></img>
       </div>
       <div className="line"></div>

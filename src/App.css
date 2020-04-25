@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   color: #000;
-  height: 100vh;
+  /* height: 100vh; */
   flex-flow: wrap;
 }
 
@@ -16,32 +16,11 @@
   box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
   border-radius: 10px;
 } */
-.Signup .logo {
-  height: 120px;
-  width: 120px;
-  position: relative;
-  left: 30%;
-  display: inline-block;
-  margin: 2%;
-}
 
-.container {
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  width: max-content;
-}
 .Signup .register-form .error {
   color: #990033;
 }
-.Signin .logo {
-  height: 120px;
-  width: 120px;
-  position: relative;
-  left: 30%;
-  display: inline-block;
-  margin: 2%;
-}
+
 .posts {
   display: inline;
   flex-direction: row;

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { getUser } from "../Utils/Common";
+import { getUser } from ".././Utils/Common";
 import { Link } from "react-router-dom";
 
 const user = getUser();
@@ -11,7 +11,7 @@ export default class MyProfile extends Component {
     this.state = {
       users: [],
       isLoading: false,
-      totalConn: null
+      totalConn: null,
     };
   }
 
@@ -19,15 +19,15 @@ export default class MyProfile extends Component {
     this.setState({ isLoading: true });
     if (user.length !== 0) {
       const id = user.id;
-      const url = `http://127.0.01.:8000/accounts/profilesId/${id}`;
+      const url = `https://teenivoapi.herokuapp.com/accounts/profilesId/${id}`;
       axios
         .get(url)
-        .then(response =>
+        .then((response) =>
           this.setState({ users: response.data, isLoading: false })
         );
       axios
-        .get(`http://127.0.0.1:8000/addfriend/friend/${id}`)
-        .then(response =>
+        .get(`http://teenivoapi.herokuapp.com/addfriend/friend/${id}`)
+        .then((response) =>
           this.setState({ totalConn: response.data.length, isLoading: false })
         );
     }

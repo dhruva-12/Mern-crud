@@ -13,7 +13,7 @@ export default function PostSignup() {
   }, [isLoading]);
 
   const getUsers = () => {
-    fetch(`http://127.0.0.1:8000/rest-auth/user/`, {
+    fetch(`https://teenivoapi.herokuapp.com/rest-auth/user/`, {
       method: "GET",
       headers: {
         Authorization: "Token " + getToken(),
@@ -33,10 +33,10 @@ export default function PostSignup() {
   return (
     <div className="container clearfix">
       <div className="post-signup">
-        <div>
-          <img className="logo" src={logo} alt="logo" />
+        <div className="logo">
+          <img className="teenivo-logo" src={logo} alt="logo" />
         </div>
-        <div>
+        <div className="main-content" style={{ width: "353px" }}>
           <h5>
             <p className="text-center" style={{ fontSize: "18px" }}>
               Email Confirmed
