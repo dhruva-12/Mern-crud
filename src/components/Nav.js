@@ -5,6 +5,7 @@ import trophy from "../images/trophy.png";
 import message from "../images/message.png";
 import bellicon from "../images/bellicon.png";
 import search from "../images/search.png";
+import arrow from "../images/arrow.png";
 import teens from "../images/teenivo-elephant.png";
 import { getUser } from "../Utils/Common";
 import axios from "axios";
@@ -36,12 +37,12 @@ class Nav extends Component {
   render() {
     const { users } = this.state;
     return (
-      <div className="Navbar">
+      <div className=" navbar">
         <div className="searchbar">
           <img
             className="sep"
             src={users.header_photo}
-            alt="profie of user"
+            alt="profile of user"
           ></img>
 
           <p className="me">Me</p>
@@ -56,6 +57,7 @@ class Nav extends Component {
           <img className="bellicon" src={bellicon} alt="bellicon" />
           <img className="trophy" src={trophy} alt="trophy" />
           <img className="message" src={message} alt="message" />
+          <img className="arrow " src={arrow} alt="downarrow " />
         </div>
       </div>
     );

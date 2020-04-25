@@ -6,6 +6,7 @@ import Rightp from "./Rightp";
 import { getUser } from "../Utils/Common";
 import axios from "axios";
 import Nav from "./Nav";
+import Footer from "./Footer";
 
 const user = getUser();
 
@@ -48,6 +49,7 @@ class Layout extends React.Component {
           <Midp></Midp>
           <Rightp></Rightp>
           <Nav></Nav>
+          <Footer></Footer>
         </div>
       </>
     );
