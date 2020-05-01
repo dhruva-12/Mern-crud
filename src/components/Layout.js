@@ -49,7 +49,7 @@ class Layout extends React.Component {
           <Midp></Midp>
           <Rightp></Rightp>
           <Nav></Nav>
-          <Footer></Footer>
+          
         </div>
       </>
     );

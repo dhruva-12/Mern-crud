@@ -27,6 +27,8 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import main from "./components/main";
 import Layout from "./components/Layout";
 import Nav from "./components/Nav";
+import Message from "./components/Message";
+import Messages from "./components/Messages";
 
 export class App extends Component {
   render() {
@@ -70,6 +72,9 @@ export class App extends Component {
               <Route path="/profile-type" component={ProfileType} />
               {/* <Route path="/Layout" component={Layout} /> */}
               <Route path="/Nav" component={Nav} />
+              <Route path="/Message" component={Message} />
+              <Route path="/Messages" component={Messages} />
+
             </Switch>
           </header>
         </Router>

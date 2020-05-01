@@ -53,10 +53,12 @@ class Leftp extends React.Component {
             {user.first_name}&nbsp;{user.last_name}
           </label>
           <p className="text1 text-center">{users.headline}</p>
+          <div class="lines"></div>
           <p className="text2">Member Since: April 2020</p>
           <p className="text3">Invited By: </p>
           <div class="line1"></div>
           <p className="text4">Student Account: Free</p>
+          <div class="button">Upgrade</div>
         </div>
         <div className="subbox">
           <p className="pv">Profile Views: </p>

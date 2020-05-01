@@ -8,7 +8,7 @@
 } */
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Segoe UI",
     monospace;
 }
 * {
@@ -31,6 +31,10 @@ label,
 span {
   font-weight: 500;
   font-family: "Fira Sans", sans-serif;
+}
+.card {
+  top: -30px;
+  background-color: #f2f2f2;
 }
 .header {
   padding: 10px;
@@ -72,16 +76,19 @@ span {
   margin: 20px;
   width: auto;
 }
-.card {
-  top: 40px;
-}
+
 .card-body {
+  background-color: #f2f2f2;
+
+  
+  
+}
+.cf{
+  margin-top: 100px;
   background-color: #f2f2f2;
 }
 
-.card-title {
-  background-color: #d7d7d7;
-}
+
 .card-text {
   background-color: #f2f2f2;
 }
@@ -111,22 +118,22 @@ span {
 }
 
 .bl {
-  width: 550px;
+  width: 500px;
   height: 2px;
-  margin-left: 370px;
-  margin-top: 180px;
+  margin-left: 0px;
+  margin-top: 80px;
   border-bottom: 1px solid rgb(102, 102, 102);
   position: absolute;
 }
 .sort {
-  top: -7px;
+  margin-top: -7px;
   left: 220px;
   position: absolute;
   background-color: white;
 
 }
 .searchbar .people {
-  height: 55px;
+  height: 52px;
   width: 72px;
   left: 732px;
 
@@ -140,7 +147,7 @@ span {
 }
 
 .searchbar .bellicon {
-  height: 55px;
+  height: 52px;
   width: 82px;
   left: 943px;
 
@@ -228,15 +235,15 @@ span {
   word-break: break-word;
 }
 .searchbar .trophy {
-  height: 55px;
+  height: 52px;
   width: 65px;
-  left: 1070px;
+  left: 1060px;
 
   position: absolute;
 }
 
 .searchbar .message {
-  height: 55px;
+  height: 52px;
   width: 64px;
   left: 840px;
 
@@ -344,8 +351,10 @@ span {
   background-color: white;
 }
 
+
 .card {
   margin-left: 370px;
+  background-color: #f2f2f2;
 }
 .move {
   margin-left: 900px;
@@ -378,15 +387,15 @@ span {
   text-decoration: none;
   color: rgb(144, 55, 73);
   text-align: center;
-  left: 874px;
-  top: 120px;
+  left: 750px;
+  top: 0px;
   width: 90px;
   height: 28px;
   position: absolute;
   overflow: hidden;
   line-height: 25px;
-  white-space: pre-wrap;
-  overflow-wrap: break-word;
+  z-index: 1;
+  
 }
 .bb {
   font-size: 14px;
@@ -666,6 +675,16 @@ span {
   position: absolute;
   margin-top: -520px;
 }
+
+
+.midbox .lines {
+  width: 180px;
+  height: 47px;
+  margin-left: 17px;
+  border-bottom: 1px solid rgb(102, 102, 102);
+  position: absolute;
+  margin-top: -40px;
+}
 .midbox .text4 {
   margin-left: 17px;
   position: absolute;
@@ -747,6 +766,7 @@ span {
   width: 556px;
   height: 608px;
   border-color: #d7d7d7;
+  
 }
 .header {
   width: 100%;
@@ -792,4 +812,117 @@ span {
 .card-title .tit{
   margin-left: 20px;
   position: absolute;
+}
+
+.scroller {
+  width: 300px;
+  height: 412px;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  left:-200px;
+  top:100px;
+}
+.b .boxx{
+  width:556px;
+  height:608px;
+  position: absolute;
+  left:67px;
+    top:130px; 
+    box-sizing: border-box;
+    border-radius: 0px;
+    background-color: rgb(227, 224, 215);
+    border: 1px solid rgb(102, 102, 102);
+}
+
+
+.b .boxx .message{
+  margin-top: 410px;
+  background-color:rgb(227, 224, 215) ;
+}
+
+
+.b .boxx .b1 .lab{
+  margin-left: 25px;
+  white-space: nowrap;
+   text-align: left;
+    font-size: 14px;
+     font-weight: 700;
+   font-style: normal;
+    text-decoration: none; 
+    font-family: Segoe UI;
+     color: rgb(0, 0, 0);
+
+}
+.b .boxx .b1{
+  width:87px;
+  height: 24px;
+  box-sizing: border-box;
+  margin-left:400px;
+  border-radius: 0px;
+  background-color: rgb(227, 224, 215);
+  border: 1px solid rgb(102, 102, 102);
+}
+
+.b .boxx1{
+  width:300px;
+  height: 416px;
+  top:130px;
+  left:-255px;
+  box-sizing: border-box;
+  border-radius: 0px;
+  background-color: rgb(227, 224, 215);
+  border: 1px solid rgb(102, 102, 102);
+}
+.b .boxx2{
+  width:299px;
+  height: 78px;
+  top:130px;
+  left:-370px;
+  box-sizing: border-box;
+  border-radius: 0px;
+  background-color: rgb(227, 224, 215);
+  border: 1px solid rgb(102, 102, 102);
+}
+
+.b .boxx2 .cir{
+  width:51px;
+  height: 51px;
+  border: 1px solid rgb(102, 102, 102);
+  border-radius: 50%;
+  margin-top:-370px;
+}
+.rlines{
+  width:270px;
+  margin-top: 0px;
+  margin-left: 10px;
+  border: 1px solid rgb(102, 102, 102);
+  position: absolute;
+}
+.rlines1{
+  width: 0px;
+    height: 50px;
+    margin-top: -150px;
+    margin-left: 170px;
+    border: 1px solid rgb(102, 102, 102);
+    position: absolute;
+}
+
+.rlines2{
+  width:270px;
+  margin-top: -90px;
+  margin-left: 10px;
+  border: 1px solid rgb(102, 102, 102);
+  position: absolute;
+}
+.rlines3{
+  width:270px;
+  margin-top: -80px;
+  margin-left: 10px;
+  border: 1px solid rgb(102, 102, 102);
+  position: absolute;
+}
+.fname{
+  margin-top:20px;
+  margin-left:100px;
+  
 }

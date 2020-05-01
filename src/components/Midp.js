@@ -24,7 +24,7 @@ import fav from "../images/fav.png";
   componentDidMount() {
     this.setState({ isLoading: true });
     this._isMounted = true;
-    fetch(`http://teenagerstartups.com/media/featured-story-list`)
+    fetch(`http://teenagerstartups.com/media/featured-story-list/3`)
       .then((response) => response.json())
       .then((data) => {
         if (this._isMounted) {
@@ -75,12 +75,10 @@ import fav from "../images/fav.png";
   
   render() {
     const { posts, isLoading, users } = this.state;
-    if (isLoading) {
-      return <p>Loading ...</p>;
-    }
+    
     return (
     <>
-      <div class="postb" onClick={this.togglePopup.bind(this)} >Post Teenku</div>
+      
       {this.state.showPopup ?
          <Popup
           
@@ -92,12 +90,19 @@ import fav from "../images/fav.png";
       <div className="posts">
          <div className="col-12">
 
-
-
-           
+       
+         <div className="postb" onClick={this.togglePopup.bind(this)} >Post Teenku</div> 
+            <div className="card"> 
+            <div className="bl">
+        <div className="sort">
+          Sort By Top
+        </div>
+        </div>   
+        <div className="cf">
+        
          {posts.map((post, index) => (
-           <div className="card" key={index}>
-             <div className="card-body">
+           
+             <div className="card-body" key={index}>
             
                
              <h6 className="card-title">
@@ -109,7 +114,7 @@ import fav from "../images/fav.png";
                  className="post-img"
                ></img>
                
-               <h6 className="card-title">{post.title}</h6>
+               <h6 className="card-title text-blue">{post.title}</h6>
                <h6 className="card-subtitle mb-2 text-muted">
                
                 By {post.contributor_name} and {post.contributor_name_2}
@@ -127,11 +132,14 @@ import fav from "../images/fav.png";
 
 
              </div>
-           </div>
+             
+           
            
          ))}
          </div>       
           </div> 
+          </div>
+          </div>
           </>
        )
          }
