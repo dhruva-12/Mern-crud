@@ -321,16 +321,7 @@ span {
   border-radius: 50%;
   border: 1px solid rgb(102, 102, 102);
 }
-.lab {
-  margin-left: 10px;
-  white-space: nowrap;
-  text-align: left;
-  font-size: 18px;
-  font-weight: 700;
-  font-style: normal;
-  text-decoration: none;
-  color: rgb(0, 0, 0);
-}
+
 .circless {
   margin-left: 5px;
   border-radius: 50%;
@@ -836,13 +827,23 @@ span {
 
 
 .b .boxx .message{
-  margin-top: 410px;
+  margin-top: 300px;
   background-color:rgb(227, 224, 215) ;
+  position: absolute;
+  width:554px;
 }
-
+.send{
+ top:320px;
+ left:500px;
+  height: 24px;
+  width:24px;
+  position: absolute;
+  z-index: 1;
+}
 
 .b .boxx .b1 .lab{
   margin-left: 25px;
+  margin-top: 0px;
   white-space: nowrap;
    text-align: left;
     font-size: 14px;
@@ -851,18 +852,55 @@ span {
     text-decoration: none; 
     font-family: Segoe UI;
      color: rgb(0, 0, 0);
+     position: absolute;
+
 
 }
+
+.boxx .dots{
+  height: 22px;
+  width: 22px;
+  margin-left: 520px;
+  margin-top: 420px;
+  position: absolute;
+}
+
+
 .b .boxx .b1{
   width:87px;
   height: 24px;
   box-sizing: border-box;
   margin-left:400px;
+  margin-top: 420px;
   border-radius: 0px;
+  position: absolute;
   background-color: rgb(227, 224, 215);
   border: 1px solid rgb(102, 102, 102);
 }
 
+.inp{
+  width:521px;
+  height:89px;
+  border: 1px solid rgb(102, 102, 102);
+  position: absolute;
+  top:100px;
+  left:10px;
+}
+.boxx .dot{
+  height: 17px;
+  width:17px;
+  margin-left:520px;
+  position: absolute;
+  
+}
+.newmessage{
+  color:black;
+  margin-left:220px;
+  position: absolute;
+}
+.form-control .boxes{
+  width:400px;
+}
 .b .boxx1{
   width:300px;
   height: 416px;
@@ -924,5 +962,103 @@ span {
 .fname{
   margin-top:20px;
   margin-left:100px;
+  color: black;
   
+}
+.boxx1 .mss{
+  height:24px;
+  width:24px;
+  margin-left: 235px;
+  margin-top:5px;
+  position:absolute;
+}
+.boxx1 .dots{
+  height:22px;
+  width:22px;
+  margin-left: 270px;
+  margin-top:5px;
+  position: absolute;
+}
+.boxx1 .word{
+  width: 91px;
+    height: 24px;
+    margin-top: 0px;
+    margin-left: 4px;
+}
+.boxx1 .bord{
+  width:257px;
+  height:35px;
+  margin-left: 5px;
+  position: absolute;
+  margin-top:40px;
+}
+.boxx1 .filter{
+  width:19px;
+  height:19px;
+  margin-left: 270px;
+  margin-top: 45px;
+  position: absolute;
+}
+
+.boxx1 .h-divide{
+  margin-top:40px;
+  height:1px;
+  width:100%;
+  border-top:1px solid gray;
+ }
+.boxx .txt{
+  margin-top: 15px;
+  
+}
+
+.boxx .h-divider{
+  margin-top:30px;
+  margin-bottom:15px;
+  height:1px;
+  width:100%;
+  border-top:1px solid gray;
+}
+.nm{
+  margin-top:30px;
+  margin-bottom:15px;
+  height:1px;
+  width:100%;
+  border-top:1px solid gray;
+  position: fixed;
+}
+.h-divider{
+  margin-top:5px;
+  margin-bottom:15px;
+  height:1px;
+  width:100%;
+  border-top:1px solid gray;
+ }
+.searchbox{
+  height: 100px;
+    width: 552px;
+    margin-left: -30px;
+    margin-top: -150px;
+    border: solid 1px #f2f2f2;
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.searchh{
+  width:556px;
+  height:40px;
+  margin-top:0px;
+  margin-left:-17px;
+  
+}
+.flag{
+  margin-left:400px;
+  margin-top: -40px;
+}
+.mes{
+margin-left:450px;
+margin-top:20px;
+}
+.star{
+margin-left:500px;
+margin-top:-90px;
 }

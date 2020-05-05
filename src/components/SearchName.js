@@ -4,7 +4,7 @@ import { getUser } from "../Utils/Common";
 import { Link } from "react-router-dom";
 
 let degrees = [];
-export class SearchPeople extends Component {
+export class SearchName extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -54,7 +54,6 @@ export class SearchPeople extends Component {
   handleChange = (event) => {
     event.preventDefault();
     const { name, value } = event.target;
-    //this.setState({ [name]: value, isLoading:true }, () => console.log(this.state));
     if (!value) {
       this.setState({ [name]: value, users: {}, message: "" });
     } else {
@@ -71,7 +70,7 @@ export class SearchPeople extends Component {
     if (u !== null) {
       for (let index = 0; index < data.length; index++) {
         let id = data[index].user_id.id;
-        fetch(`http://teenivoapi.herokuapp.com/addfriend/checkSeperation/${u.id}/${id}`, {
+        fetch(`http://teenivoapi.herokuapp.com/messaging/addParticipant/${u.id}/${id}`, {
           method: "GET",
         })
           .then((response) => response.json())
@@ -89,31 +88,22 @@ export class SearchPeople extends Component {
       return (
         <div className="results-container">
           <div className="col-12">
+          <div className="searchbox">
             {users.map((user, index) => (
-              <div className="card" key={index}>
-                <div className="card-body">
-                  <Link
-                    to={`/profile/${user.user_id.first_name}/${user.user_id.id}`}
-                  >
-                    <h5
-                      className="card-title"
-                      //onClick={this.calculateSeparation(user.user_id.id)}
-                    >
+                 
+              <div  key={index}>
+                 
+                <h5>
                       {user.user_id.first_name} {user.user_id.last_name}
                     </h5>
-                  </Link>
-                  <p style={{ marginBottom: "10px" }}>
-                    {levels[index] === "0"
-                      ? "6 level"
-                      : levels[index] + " level"}
-                  </p>
-                  <h6 className="card-subtitle mb-2 text-muted">
+                  <h6>
                     {user.user_id.email}
                   </h6>
-                </div>
-              </div>
+                  </div>
+              
             ))}
           </div>
+        </div>
         </div>
       );
     }
@@ -123,26 +113,25 @@ export class SearchPeople extends Component {
     return (
       <div className="search">
         <form onSubmit={this.handleSubmit} noValidate>
-          <div className="register-form">
-            <div className=" form-label-group">
+          
+            
               <p>{error}</p>
               <input
                 type="text"
-                //value={Search}
                 id="search-bar"
-                className="form-control"
+                className="searchh"
                 name="Search"
-                placeholder="Search By Name"
+                placeholder="Type Name or Multiple Names"
                 onChange={this.handleChange}
               />
               {this.renderSearchResults()}
-            </div>
+            
             {message && <p className="message">{message}</p>}
-          </div>
+        
         </form>
       </div>
     );
   }
 }
 
-export default SearchPeople;
+export default SearchName;

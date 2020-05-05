@@ -1,31 +1,25 @@
 import React from "react";
-import { fade, makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
+import logo from "../../images/teenivo-elephant.png";
+import SearchPeople from "../SearchPeople";
 import IconButton from "@material-ui/core/IconButton";
-import InputBase from "@material-ui/core/InputBase";
-import MenuItem from "@material-ui/core/MenuItem";
-import Menu from "@material-ui/core/Menu";
-import SearchIcon from "@material-ui/icons/Search";
-import AccountCircle from "@material-ui/icons/AccountCircle";
 import NotificationsActiveIcon from "@material-ui/icons/NotificationsActive";
 import HomeIcon from "@material-ui/icons/Home";
 import PeopleIcon from "@material-ui/icons/People";
 import ForumIcon from "@material-ui/icons/Forum";
-import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
-import logo from "../../images/teenivo-elephant.png";
 import rewardLogo from "../../images/reward-icon.png";
+import SearchIcon from "@material-ui/icons/Search";
+import MenuItem from "@material-ui/core/MenuItem";
+import Menu from "@material-ui/core/Menu";
+import { Link, Router } from "react-router-dom";
+import { getUser, removeUserSession } from "../../Utils/Common";
+import axios from "axios";
+import { makeStyles } from "@material-ui/core/styles";
+import { Redirect } from "react-router-dom";
 
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: "#903749",
-    },
-  },
-});
+const user = getUser();
 const useStyles = makeStyles((theme) => ({
   grow: {
-    flexGrow: 1,
+    flexGrow: 0.5,
   },
   logo: {
     display: "none",
@@ -39,24 +33,8 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     fontSize: "14px",
   },
-  search: {
-    position: "relative",
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 1),
-    "&:hover": {
-      backgroundColor: fade(theme.palette.common.white, 1),
-    },
-    marginRight: theme.spacing(2),
-    marginLeft: 0,
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      marginLeft: theme.spacing(2.5),
-      width: "auto",
-    },
-  },
   searchIcon: {
     padding: theme.spacing(0, 2),
-    height: "100%",
     position: "absolute",
     pointerEvents: "none",
     display: "flex",
@@ -64,142 +42,207 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     color: "#999999",
   },
-  inputRoot: {
-    color: "999999",
-  },
-  inputInput: {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("md")]: {
-      width: "25ch",
-      height: "2.5ch",
-    },
-  },
   sectionDesktop: {
-    // display: "none",
+    //  display: "inline-block",
     [theme.breakpoints.up("md")]: {
       display: "flex",
+      color: "white",
+      marginLeft: "100px",
+      marginRight: "120px",
     },
   },
 }));
 
-export default function PrimarySearchAppBar() {
+export default function Appbar() {
   const classes = useStyles();
+  const [users, setUsers] = React.useState([]);
+  const [isLoading, setIsLoading] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-
+  const [removeUser, setRemoveUser] = React.useState(false);
   const isMenuOpen = Boolean(anchorEl);
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+  const menuId = "primary-search-account-menu";
+
+  React.useEffect(() => {
+    if (isLoading === true) {
+      getProfile();
+    }
+  }, [isLoading]);
+
+  const getProfile = () => {
+    if (user.length !== 0) {
+      const id = user.id;
+      const url = `https://teenivoapi.herokuapp.com/accounts/profilesId/${id}`;
+      axios.get(url).then((response) => {
+        setUsers(response.data);
+        setIsLoading(false);
+      });
+    }
+  };
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
-  const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl(null);
+  const handleSignOut = () => {
+    removeUserSession();
+    setRemoveUser(true, redirectToSigin());
   };
-
+  const redirectToSigin = () => {
+    if (!removeUser) {
+      return <Redirect to="/signin" />;
+    }
+  };
   const handleMenuClose = () => {
     setAnchorEl(null);
-    handleMobileMenuClose();
   };
 
-  const menuId = "primary-search-account-menu";
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
-      anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      anchorOrigin={{ vertical: "middle", horizontal: "right" }}
       id={menuId}
       keepMounted
-      transformOrigin={{ vertical: "top", horizontal: "right" }}
+      transformOrigin={{ vertical: "middle", horizontal: "right" }}
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <Link to={"/myProfile"}>
+        <MenuItem>My Profile</MenuItem>
+      </Link>
+      <MenuItem onClick={handleSignOut}>Sign Out</MenuItem>
     </Menu>
   );
 
   return (
-    <div className={classes.grow}>
-      <MuiThemeProvider theme={theme}>
-        <AppBar position="static">
-          <Toolbar>
-            <div>
-              <img className={classes.logo} src={logo} alt="logo" />
+    <div className="Appbar">
+      <nav class="navbar-light justify-content-center navbar-expand-sm">
+        <div className="justify-content-center nav-logo inline-block">
+          <img className="" src={logo} alt="logo" />
+        </div>
+        <SearchPeople />
+        {/* <div className={classes.grow} style={{ display: "inline-block" }} /> */}
+        <div
+          className={classes.sectionDesktop}
+          style={{ display: "inline-block", verticalAlign: "middle" }}
+        >
+          <IconButton
+            aria-label="Home Section"
+            color="inherit"
+            classes={{ label: classes.iconButtonLabel }}
+            style={{ padding: "0px 20px" }}
+          >
+            <Link to={"/feed"} style={{ color: "white" }}>
+              <HomeIcon />
+              <div>Home</div>
+            </Link>
+          </IconButton>
+          <IconButton
+            aria-label="My Friends section"
+            color="inherit"
+            classes={{ label: classes.iconButtonLabel }}
+            style={{ padding: "0px 20px" }}
+          >
+            <Link to={"/mynetwork"} style={{ color: "white" }}>
+              <PeopleIcon />
+              <div>My Friends</div>
+            </Link>
+          </IconButton>
+          <IconButton
+            aria-label="Messages Section"
+            color="inherit"
+            classes={{ label: classes.iconButtonLabel }}
+            style={{ padding: "0px 20px" }}
+          >
+            <ForumIcon />
+            <div>Messaages</div>
+          </IconButton>
+          <IconButton
+            aria-label="show 17 new notifications"
+            color="inherit"
+            classes={{ label: classes.iconButtonLabel }}
+            style={{ padding: "0px 20px" }}
+          >
+            <NotificationsActiveIcon />
+            <div>Notifications</div>
+          </IconButton>
+          <IconButton
+            aria-label="My Points section"
+            color="inherit"
+            style={{ padding: "0px 20px" }}
+          >
+            <div className="mypoint-icon d-flex flex-column">
+              <img src={rewardLogo} alt="My Points icon"></img>
+              <label>My Points</label>
             </div>
+          </IconButton>
 
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
-              <InputBase
-                placeholder="Search…"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-                inputProps={{ "aria-label": "search" }}
-              />
+          {/* <IconButton
+            edge="end"
+            aria-controls={menuId}
+            aria-label="account of current user"
+            aria-haspopup="true"
+            onClick={handleProfileMenuOpen}
+            color="inherit"
+            classes={{ label: classes.iconButtonLabel }}
+            style={{ padding: "0px" }}
+          >
+            <div className="profile-photo">
+              <img src={users.header_photo} alt="profie of user"></img>
+              <div>Me</div>
             </div>
-            <div className={classes.grow} />
-            <div className={classes.sectionDesktop}>
-              <IconButton
-                aria-label="Home Section"
-                color="inherit"
-                classes={{ label: classes.iconButtonLabel }}
-              >
-                <HomeIcon />
-                <div>Home</div>
-              </IconButton>
-              <IconButton
-                aria-label="My Friends section"
-                color="inherit"
-                classes={{ label: classes.iconButtonLabel }}
-              >
-                <PeopleIcon />
-                <div>My Friends</div>
-              </IconButton>
-              <IconButton
-                aria-label="Messages Section"
-                color="inherit"
-                classes={{ label: classes.iconButtonLabel }}
-              >
-                <ForumIcon />
-                <div>Messaages</div>
-              </IconButton>
-              <IconButton
-                aria-label="show 17 new notifications"
-                color="inherit"
-                classes={{ label: classes.iconButtonLabel }}
-              >
-                <NotificationsActiveIcon />
-                <div>Notifications</div>
-              </IconButton>
-              <IconButton aria-label="My Points section" color="inherit">
-                <div className="mypoint-icon d-flex flex-column">
-                  <img src={rewardLogo} alt="My Points icon"></img>
-                  <label>My Points</label>
-                </div>
-              </IconButton>
-              <IconButton
-                edge="end"
-                aria-label="account of current user"
-                aria-controls={menuId}
-                aria-haspopup="true"
-                onClick={handleProfileMenuOpen}
-                color="inherit"
-              >
-                <AccountCircle />
-              </IconButton>
+          </IconButton> */}
+          <IconButton
+            aria-label="Me Dropdown"
+            color="inherit"
+            style={{ padding: "0px 20px", height: "64px" }}
+          >
+            <button
+              className="navbar-toggler nav-btn"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-icon"></span>
+            </button>
+            <div
+              className="collapse navbar-collapse"
+              id="navbarSupportedContent"
+            >
+              <ul className="navbar-nav">
+                <li className="nav-item dropdown position-static">
+                  <a
+                    className="nav-link dropdown-toggle"
+                    href="#"
+                    id="navbarDropdown"
+                    role="button"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    style={{ padding: "0px" }}
+                  >
+                    <div className="profile-photo inline-block justify-content-center">
+                      <img src={users.header_photo} alt="profie of user"></img>
+                      <div>Me</div>
+                    </div>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a className="dropdown-item" href="myProfile">
+                      View Profile
+                    </a>
+                    <a className="dropdown-item" href="myProfile">
+                      Sign out
+                    </a>
+                  </div>
+                </li>
+              </ul>
             </div>
-          </Toolbar>
-        </AppBar>
-        {renderMenu}
-      </MuiThemeProvider>
+          </IconButton>
+        </div>
+      </nav>
+      {renderMenu}
+      {redirectToSigin}
     </div>
   );
 }

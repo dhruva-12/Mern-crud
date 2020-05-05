@@ -7,6 +7,7 @@ import { getUser } from "../Utils/Common";
 import axios from "axios";
 import Nav from "./Nav";
 import Footer from "./Footer";
+import { AppBar } from "@material-ui/core";
 
 const user = getUser();
 
@@ -48,7 +49,7 @@ class Layout extends React.Component {
           <Leftp></Leftp>
           <Midp></Midp>
           <Rightp></Rightp>
-          <Nav></Nav>
+          <AppBar></AppBar>
           
         </div>
       </>
