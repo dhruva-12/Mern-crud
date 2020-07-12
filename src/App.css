@@ -1,161 +1,39 @@
-.App-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: #000;
-  /* height: 100vh; */
-  flex-flow: wrap;
+.wrapper {
+  padding-top: 30px;
 }
 
-/* .Signup {
-  width: 400px;
-  height: fit-content;
-  background-color: #f8f8f8;
-  padding: 1em;
-  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
-  border-radius: 10px;
-} */
-
-.Signup .register-form .error {
-  color: #990033;
+body h3 {
+  margin-bottom: 25px;
 }
 
-.posts {
-  display: inline;
-  flex-direction: row;
+.navbar-brand a {
+  color: #ffffff;
 }
-.posts .card {
-  width: 500px;
-  background-color: #f2f2f2;
+
+.form-wrapper,
+.table-wrapper {
+  max-width: 500px;
+  margin: 0 auto;
 }
-.myprofile {
-  margin: 2em;
-  padding: 1em;
-  background: #f8f8f8;
-  width: 65%;
+
+.table-wrapper {
+  max-width: 700px;
 }
-.myprofile .profile-imgs {
-  width: 100%;
-  height: 480px;
-  background: white;
-  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.15);
+
+.edit-link {
+  padding: 7px 10px;
+  font-size: 0.875rem;
+  line-height: normal;
+  border-radius: 0.2rem;
+  color: #fff;
+  background-color: #28a745;
+  border-color: #28a745;
+  margin-right: 10px;
   position: relative;
+  top: 1px;
 }
-.myprofile .background-img {
-  width: 90%;
-  padding: 1em 1em 0 1em;
-  height: 50%;
-}
-.myprofile .profile-img {
-  border-radius: 50%;
-  width: 128px;
-  height: 128px;
-  margin: 0 1em 1em;
-  position: relative;
-  top: -4em;
-  left: 15px;
-  border: solid 5px white;
-}
-.myprofile .profile-imgs .user-info {
-  /* display: flex !important; */
-  position: relative;
-  bottom: 90px;
-  justify-content: flex-start;
-  padding: 0.5em 2em 0;
-}
-.flex-1 {
-  flex: 1 !important;
-  font-size: 1.7rem;
-  line-height: 1.33333;
-}
-.headline {
-  font-size: 1rem;
-  line-height: 1.33333;
-  font-weight: 400;
-  margin-top: 4px !important;
-}
-ul {
-  list-style: none;
-  padding: 0;
-}
-.block {
-  background: white;
-  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.15);
-  width: 100%;
-}
-.mtb {
-  margin: 16px 0;
-  padding: 24px;
-}
-.justify-space-between {
-  justify-content: space-between;
-}
-.inline-block {
-  display: inline-block;
-}
-.t-20 {
-  font-size: 1.5rem;
-  line-height: 1.4;
-}
-.list li {
-  padding-right: 10px;
-}
-.search {
-  margin: 1em;
-  width: 400px;
-  height: auto;
-}
-.search-bar {
-  position: fixed;
-}
-.results-container {
-  display: block;
-  /* flex-flow: wrap; */
-  position: static;
-  overflow: visible;
-}
-.menu {
-  display: inline;
-}
-.post-img {
-  width: 100%;
-  padding: 1em;
-}
-.myprofile .profile-imgs .addFriend {
-  margin: 1em;
-  float: right;
-}
-.modal {
-  font-size: 12px;
-}
-.modal > .header {
-  width: 100%;
-  border-bottom: 1px solid gray;
-  font-size: 18px;
-  text-align: center;
-  padding: 5px;
-}
-.modal > .content {
-  width: 100%;
-  padding: 10px 5px;
-}
-.modal > .actions {
-  width: 100%;
-  padding: 10px 5px;
-  margin: auto;
-  text-align: center;
-}
-.modal > .close {
-  cursor: pointer;
-  position: absolute;
-  display: block;
-  padding: 2px 5px;
-  line-height: 20px;
-  right: -10px;
-  top: -10px;
-  font-size: 24px;
-  background: #ffffff;
-  border-radius: 18px;
-  border: 1px solid #cfcece;
+
+.edit-link:hover {
+  text-decoration: none;
+  color: #ffffff;
 }

@@ -1,86 +1,67 @@
-import React, { Component } from "react";
+import React from "react";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
-import "./static/main.css";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  NavLink,
-} from "react-router-dom";
-import {
-  Signup,
-  login,
-  Create,
-  Feed,
-  Requests,
-  ChangePassword,
-  MyProfile,
-  ForgotPass,
-  Profile,
-  BlockedUsers,
-  PostSignup,
-  ProfileType,
-  Footer,
-  Connections,
-} from "./components";
-import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import main from "./components/main";
-import Layout from "./components/Layout";
-import Nav from "./components/Nav";
-import Message from "./components/Message";
-import Messages from "./components/Messages";
 
-export class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Router>
-          <header className="App-header">
-            {/* <div className="header">
-              {!getToken() ? (
-                <NavLink activeClassName="active" to="/sign-in">
-                  Login
-                </NavLink>
-              ) : (
-                <div>
-                  <NavLink activeClassName="active" to="/feed">
-                    Dashboard
-                  </NavLink>
-                  <NavLink activeClassName="active" to="/mynetwork">
-                    My Network
-                  </NavLink>
-                </div>
-              )}
-            </div> */}
-            {/* <SearchPeople></SearchPeople> */}
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-            <Switch>
-              <Route exact path="/" component={main} />
-              <Route path="/signin" component={login} />
-              <Route path="/forgotpassword" component={ForgotPass} />
-              {/* <Route path="/noemail" component={noemail} /> */}
-              <Route path="/Signup" component={Signup} />
-              <Route path="/create-profile" component={Create} />
-              <Route path="/feed" component={Layout} />
-              <Route path="/mynetwork/connections" component={Connections} />
-              <Route path="/mynetwork" component={Requests} />
-              <Route path="/change-password" component={ChangePassword} />
-              <Route path="/myProfile" component={MyProfile} />
-              <Route path="/users/blocked" component={BlockedUsers} />
-              <Route path="/profile/:first_name/:user_id" component={Profile} />
-              <Route path="/email-confirmed" component={PostSignup} />
-              <Route path="/profile-type" component={ProfileType} />
-              {/* <Route path="/Layout" component={Layout} /> */}
-              <Route path="/Nav" component={Nav} />
-              <Route path="/Message" component={Message} />
-              <Route path="/Messages" component={Messages} />
+import CreateStudent from "./components/CreateStudent";
+import EditStudent from "./components/EditStudent";
+import StudentList from "./components/Studentlist";
 
-            </Switch>
-          </header>
-        </Router>
-      </div>
-    );
-  }
+function App() {
+  return (<Router>
+    <div className="App">
+      <header className="App-header">
+        <Navbar bg="dark" variant="dark">
+          <Container>
+
+            <Navbar.Brand>
+              <Link to={"/create_student"} className="nav-link">
+                React CRUD App
+              </Link>
+            </Navbar.Brand>
+
+            <Nav className="justify-content-end">
+              <Nav>
+                <Link to={"/create_student"} className="nav-link">
+                  Create Student
+                </Link>
+              </Nav>
+
+          
+
+              <Nav>
+                <Link to={"/student_list"} className="nav-link">
+                  Student List
+                </Link>
+              </Nav>
+            </Nav>
+
+          </Container>
+        </Navbar>
+      </header>
+
+      <Container>
+        <Row>
+          <Col md={12}>
+            <div className="wrapper">
+              <Switch>
+                <Route exact path='/' component={CreateStudent} />
+                <Route path="/create_student" component={CreateStudent} />
+                <Route path="/edit_student/:id" component={EditStudent} />
+                <Route path="/student_list" component={StudentList} />
+              </Switch>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </div>
+  </Router>);
 }
 
 export default App;
